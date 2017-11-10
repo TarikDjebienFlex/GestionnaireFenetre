@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+
+	<fx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			
+			private var _myWindow:LoginWindow;
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				
+				_myWindow = PopUpManager.createPopUp( this, LoginWindow ) as LoginWindow;
+				
+				_myWindow.addEventListener(CloseEvent.CLOSE, onCloseWindow);
+				
+				PopUpManager.centerPopUp( _myWindow );
+			}
+			
+			private function onCloseWindow(event:CloseEvent):void {
+				PopUpManager.removePopUp( _myWindow );
+				_myWindow = null;
+			}
+			
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<!-- Placer ici les éléments non visuels (services et objets de valeur, par exemple). -->
+	</fx:Declarations>
+	
+	
+	
+	
+	<s:Button label="Créer une fenêtre" 
+			  top="50" left="50"
+			  click="button1_clickHandler(event)" />
+	
+</s:Application>
